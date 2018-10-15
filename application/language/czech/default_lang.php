@@ -6,6 +6,10 @@
 $lang["language_locale"] = "cs"; //locale code
 $lang["language_locale_long"] = "cs-CZ"; //long locale code
 
+// location
+$lang["location_type"] = "typ";
+
+
 /* common */
 $lang["add"] = "Přidat";
 $lang["edit"] = "Upravit";

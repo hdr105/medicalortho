@@ -20,6 +20,7 @@ $(document).ready(function () {
     //set datepicker language
 
     $('body').on('click', '[data-act=ajax-modal]', function () {
+
         var data = {ajaxModal: 1},
         url = $(this).attr('data-action-url'),
                 isLargeModal = $(this).attr('data-modal-lg'),

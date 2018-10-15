@@ -6,6 +6,43 @@
 $lang["language_locale"] = "en"; //locale code
 $lang["language_locale_long"] = "en-US"; //long locale code
 
+// location
+$lang["locations"] = "Locations";
+$lang["location_date"] = "Date";
+$lang["location_type"] = "Rental type";
+$lang["location_quantity"] = "Quantity";
+$lang["location_patient"] = "Patient";
+$lang["location_room"] = "Room";
+$lang["location_service"] = "Service";
+$lang["location_comment"] = "Comment";
+$lang["location_status"] = "Status";
+$lang["location_date"] = "Date";
+
+//category
+$lang["catalog_category"] = "Category";
+$lang["add_category"] = "ADD Category";
+$lang["parent_category"] = "Parent Category";
+$lang["category_product"] = "Product";
+$lang["catalog"] = "Catalog";
+$lang["location_request"] = "Location";
+$lang["category_date"] = "Date";
+
+//product
+$lang["product"] = "Product";
+$lang["add_product"] = "Add Product";
+
+//orders
+$lang["orders"] = "Order";
+
+
+$lang["well_received"] = "Well Received";
+$lang["being_process"] = "Being Processed";
+$lang["complete"] = "Completed";
+$lang["status_change"] = "Status Changed";
+$lang["status_changed"] = "The Status has been changed.";
+
+
+
 /* common */
 $lang["add"] = "Add";
 $lang["edit"] = "Edit";

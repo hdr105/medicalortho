@@ -6,6 +6,20 @@
 $lang["language_locale"] = "fr"; //locale code
 $lang["language_locale_long"] = "fr-FR"; //long locale code
 
+// location
+
+$lang["location_date"] = "Rendez-vous amoureux";
+$lang["location_room"] = "Room";
+$lang["location_service"] = "Service";
+$lang["location_comment"] = "Comment";
+$lang["location_status"] = "Statut";
+$lang["well_received"] = "Bien reçu";
+$lang["being_process"] = "Être en cours de traitement";
+$lang["complete"] = "Terminé";
+$lang["status_change"] = "Statut changé";
+$lang["status_changed"] = "Le statut a été changé.";
+
+
 /* common */
 $lang["add"] = "Ajouter";
 $lang["edit"] = "Modifier";

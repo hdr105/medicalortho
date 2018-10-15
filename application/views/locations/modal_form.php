@@ -3,7 +3,22 @@
         <?php echo form_open(get_uri("locations/save"), array("id" => "location-form", "class" => "general-form", "role" => "form")); ?>
         <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />
 
-
+        <div class="form-group">
+            <label for="estimate_date" class=" col-md-3"><?php echo lang('location_date'); ?></label>
+            <div class="col-md-9">
+                <?php
+                echo form_input(array(
+                    "id" => "location_date",
+                    "name" => "location_date",
+                    "value" => $model_info->created_at,
+                    "class" => "form-control",
+                    "placeholder" => lang('location_date'),
+                    "data-rule-required" => true,
+                    "data-msg-required" => lang("field_required"),
+                ));
+                ?>
+            </div>
+        </div>
         <div class="form-group">
             <label for="title" class=" col-md-3"><?php echo lang('location_type'); ?></label>
             <div class=" col-md-9">
@@ -28,6 +43,7 @@
                 echo form_input(array(
                     "id" => "quantity",
                     "name" => "quantity",
+                    "type" => "number",
                     "value" => $model_info->quantity,
                     "class" => "form-control",
                     "placeholder" => lang('location_quantity'),
@@ -90,6 +106,7 @@
                 ?>
             </div>
         </div>
+
         
             <!-- client can't be changed during editing -->
             <?php if ($client_id) { ?>
@@ -165,7 +182,8 @@
 
             }
         });
-
+setDatePicker("#location_date");
+$(".tax-select2").select2();
 });
 
 

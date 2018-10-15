@@ -18,6 +18,9 @@
                 $access_timecard = get_array_value($permissions, "attendance");
                 $access_leave = get_array_value($permissions, "leave");
                 $access_estimate = get_array_value($permissions, "estimate");
+                $access_location =  get_array_value($permissions, "location");
+                $access_catalog =  get_array_value($permissions, "catalog");
+
                 $access_items = ($this->login_user->is_admin || $access_invoice || $access_estimate);
 
                 $manage_help_and_knowledge_base = ($this->login_user->is_admin || get_array_value($permissions, "help_and_knowledge_base"));
@@ -106,9 +109,26 @@
                     $sidebar_menu[] = array("name" => "finance", "url" => $finance_url, "class" => "fa-money", "submenu" => $finance_submenu);
                 }
 
-                 if (get_setting("module_location") == "1" && ($this->login_user->is_admin)) {
+                if (get_setting("module_location") == "1" && ($this->login_user->is_admin)) {
 
-                    $sidebar_menu[] = array("name" => "location_request", "url" => "locations", "class" => "fa-life-ring", );
+                    $sidebar_menu[] = array("name" => "location_request", "url" => "locations", "class" => "fa-map-marker ", );
+                }
+                else if (get_setting("module_location") && ($this->login_user->is_admin || $access_catalog)) {
+                    $sidebar_menu[] = array("name" => "location_request", "url" => "locations", "class" => "fa-map-marker ");
+                }
+
+
+                 if (get_setting("module_catalog") == "1" && ($this->login_user->is_admin)) {
+
+                    $sidebar_menu[] = array("name" => "catalog", "url" => "catalog", "class" => "fa-database",
+                        "submenu" => array(
+                            array("name" => "catalog_category", "url" => "category"),
+                            array("name" => "category_product", "url" => "product")
+                        )
+                    );
+
+                } else if (get_setting("module_catalog") && ($this->login_user->is_admin || $access_catalog)) {
+                    $sidebar_menu[] = array("name" => "catalog", "url" => "catalog", "class" => "fa-file-ring");
                 }
 
                 if (get_setting("module_ticket") == "1" && ($this->login_user->is_admin || $access_ticket)) {
@@ -233,7 +253,11 @@
                 }
 
                 if (get_setting("module_location") == "1") {
-                     $sidebar_menu[] = array("name" => "locations", "url" => "locations", "class" => "fa-life-ring");
+                     $sidebar_menu[] = array("name" => "locations", "url" => "locations", "class" => "fa-map-marker");
+                }
+
+                if (get_setting("module_order") == "1") {
+                     $sidebar_menu[] = array("name" => "orders", "url" => "orders", "class" => "fa-archive");
                 }
 
                 

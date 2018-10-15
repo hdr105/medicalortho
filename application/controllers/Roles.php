@@ -52,6 +52,8 @@ class roles extends MY_Controller {
 
             $view_data['attendance'] = get_array_value($permissions, "attendance");
             $view_data['invoice'] = get_array_value($permissions, "invoice");
+            $view_data['location'] = get_array_value($permissions, "location");
+            $view_data['catalog'] = get_array_value($permissions, "catalog");
             $view_data['estimate'] = get_array_value($permissions, "estimate");
             $view_data['expense'] = get_array_value($permissions, "expense");
             $view_data['client'] = get_array_value($permissions, "client");

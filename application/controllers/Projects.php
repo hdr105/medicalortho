@@ -454,22 +454,10 @@ class Projects extends MY_Controller {
         $save_id = $this->Projects_model->save($data, $id);
         if ($save_id) {
 
-            save_custom_fields("projects", $save_id, $this->login_user->is_admin, $this->login_user->user_type);
 
             if (!$id) {
 
-                if ($this->login_user->user_type === "staff") {
-                    //this is a new project and created by team members
-                    //add default project member after project creation
-                    $data = array(
-                        "project_id" => $save_id,
-                        "user_id" => $this->login_user->id,
-                        "is_leader" => 1
-                    );
-                    $this->Project_members_model->save_member($data);
-                }
-
-                log_notification("project_created", array("project_id" => $save_id));
+                log_notification("catagory_created", array("project_id" => $save_id));
             }
             echo json_encode(array("success" => true, "data" => $this->_row_data($save_id), 'id' => $save_id, 'message' => lang('record_saved')));
         } else {

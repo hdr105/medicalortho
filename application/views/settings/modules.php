@@ -104,6 +104,22 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="module_estimate" class="col-md-2"><?php echo lang('location_request'); ?></label>
+                    <div class="col-md-10">
+                        <?php
+                        echo form_checkbox("module_location", "1", get_setting("module_location") ? true : false, "id='module_location' class='ml15'");
+                        ?>                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="module_estimate" class="col-md-2"><?php echo lang('catalog'); ?></label>
+                    <div class="col-md-10">
+                        <?php
+                        echo form_checkbox("module_catalog", "1", get_setting("module_catalog") ? true : false, "id='module_catalog' class='ml15'");
+                        ?>                       
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="module_estimate_request" class="col-md-2"><?php echo lang('estimate_request'); ?></label>
                     <div class="col-md-10">
                         <?php

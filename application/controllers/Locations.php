@@ -8,18 +8,19 @@ class Locations extends MY_Controller {
     function __construct() {
         parent::__construct();
         $this->init_permission_checker("location");
+        
     }
 
     // load location list view
     function index() {
         $this->check_module_availability("module_location");
-
         if ($this->login_user->user_type === "staff") {
 
             $view_data = array();
-
+            $view_data['show_options_column'] = true;
             $this->template->rander("locations/index", $view_data);
         } else {
+
             $view_data['client_id'] = $this->login_user->client_id;
             $view_data['page_type'] = "full";
             $this->template->rander("clients/locations/index", $view_data);
@@ -37,12 +38,11 @@ class Locations extends MY_Controller {
             redirect("forbidden");
         }
 
-    
         $view_data['model_info'] = $this->Location_model->get_one($this->input->post('id'));
 
         if ($this->login_user->user_type == "client") {
             
-            $view_data['client_id'] = $this->login_user->client_id;;
+            $view_data['client_id'] = $this->login_user->client_id;
         }
 
         
@@ -101,6 +101,7 @@ class Locations extends MY_Controller {
             "comment" => $this->input->post('comment'),            
             "created_by" => $this->login_user->id,
             "created_at" => $now,
+            "loc_date"=>$this->input->post('location_date')
         );
 
         $location_data = clean_data($location_data);
@@ -153,6 +154,7 @@ class Locations extends MY_Controller {
         foreach ($list_data as $data) {
             $result[] = $this->_make_row($data);
         }
+
         echo json_encode(array("data" => $result));
     }
 
@@ -171,6 +173,7 @@ class Locations extends MY_Controller {
         foreach ($list_data as $data) {
             $result[] = $this->_make_row($data);
         }
+
         echo json_encode(array("data" => $result));
     }
 
@@ -197,8 +200,7 @@ class Locations extends MY_Controller {
             $data->quantity,
             $data->patient,
             $data->room,
-            $data->service,
-                        
+            $data->service,               
         );
 
 
@@ -216,8 +218,66 @@ class Locations extends MY_Controller {
             }
         }
 
+        $row_data[] = $data->loc_date;
+
+        if ($data->status === "1") {
+            $status_class = "label-warning";
+            $status = "<span class='label $status_class large clickable'>" . lang('well_received') . "</span> ";
+        } else if ($data->status === "2") {
+            $status_class = "label-success";
+            $status = "<span class='label $status_class large clickable'>" . lang('being_process') . "</span> ";
+        } 
+        else if ($data->status === "3") {
+            $status_class = "label-danger";
+            $status = "<span class='label $status_class large clickable'>" . lang('complete') . "</span> ";
+        } 
+
+        
+        $row_data[] = $status;
+
+        $options = 
+        '<li role="presentation">' . js_anchor("<i class='fa fa-check-circle'></i> " . lang('well_received'), array('title' => lang('well_received'), "class" => "", "data-action-url" => get_uri("locations/save_location_status/table/$data->id/1"), "data-action" => "update")) . '</li>' . 
+        '<li role="presentation">' . js_anchor("<i class='fa fa-check-circle'></i> " . lang('being_process'), array('title' => lang('being_process'), "class" => "", "data-action-url" => get_uri("locations/save_location_status/table/$data->id/2"), "data-action" => "update")) . '</li>' . 
+        '<li role="presentation">' . js_anchor("<i class='fa fa-check-circle'></i> " . lang('complete'), array('title' => lang('complete'), "class" => "", "data-action-url" => get_uri("locations/save_location_status/table/$data->id/3"), "data-action" => "update")) . '</li>'
+        ;
+
+    
+
+        $row_data[] = '
+        <span class="dropdown inline-block">
+        <button class="btn btn-default dropdown-toggle  mt0 mb0" type="button" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-cogs"></i>&nbsp;
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu">' . $options . '</ul>
+        </span>';
+       
+
         return $row_data;
     }
+
+    function save_location_status($view_type='',$location_id,$status)
+    {
+       $data = array(
+        "status" => $status
+    );
+        $save_id = $this->Location_model->save($data, $location_id);
+
+    if ($view_type == "view") 
+    {
+        echo json_encode(array("success" => true, "data" => $title_view, "message" =>  lang('record_saved')));
+    } 
+    else if($view_type == "table") 
+    {
+       echo json_encode(array("success" => true,  "data" => $this->_row_data($location_id),'id' => $location_id, 'message' => lang('status_changed')));
+    }
+
+       
+    log_notification("status_changed", array("id" => $location_id));
+
+    }
+
+
 
 
 
