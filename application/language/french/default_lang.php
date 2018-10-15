@@ -8,7 +8,7 @@ $lang["language_locale_long"] = "fr-FR"; //long locale code
 
 // location
 
-$lang["location_date"] = "Rendez-vous amoureux";
+$lang["location_date"] = "Date";
 $lang["location_room"] = "Room";
 $lang["location_service"] = "Service";
 $lang["location_comment"] = "Comment";
