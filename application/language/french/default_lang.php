@@ -20,6 +20,23 @@ $lang["status_change"] = "Statut changé";
 $lang["status_changed"] = "Le statut a été changé.";
 
 
+//category
+$lang["catalog_category"] = "Catégorie";
+$lang["add_category"] = "ADD Catégorie";
+$lang["parent_category"] = "Parent Catégorie";
+$lang["category_product"] = "Produit";
+$lang["catalog"] = "Catalogue";
+$lang["location_request"] = "Location";
+$lang["category_date"] = "Date";
+
+//product
+$lang["product"] = "Produit";
+$lang["add_product"] = "Add Produit";
+
+//orders
+$lang["orders"] = "Order";
+
+
 /* common */
 $lang["add"] = "Ajouter";
 $lang["edit"] = "Modifier";
