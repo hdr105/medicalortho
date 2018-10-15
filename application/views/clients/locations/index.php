@@ -41,6 +41,8 @@
                 {title: '<?php echo lang("location_patient") ?>', "class": "w15p"},
                 {title: '<?php echo lang("location_room") ?>', "class": "w10p"},
                 {title: '<?php echo lang("location_service") ?>', "class": "w10p"},
+                {title: "<?php echo lang("location_date") ?>", "class": "w10p"},
+                {title: "<?php echo lang("location_status") ?>", "class": "w10p"},
 
             ],
            
