@@ -8,7 +8,7 @@ $lang["language_locale_long"] = "fr-FR"; //long locale code
 
 // location
 
-$lang["location_date"] = "Rendez-vous amoureux";
+$lang["location_date"] = "Date";
 $lang["location_room"] = "Room";
 $lang["location_service"] = "Service";
 $lang["location_comment"] = "Comment";
@@ -17,6 +17,23 @@ $lang["being_process"] = "Être en cours de traitement";
 $lang["complete"] = "Terminé";
 $lang["status_change"] = "Statut changé";
 $lang["status_changed"] = "Le statut a été changé.";
+
+
+//category
+$lang["catalog_category"] = "Catégorie";
+$lang["add_category"] = "ADD Catégorie";
+$lang["parent_category"] = "Parent Catégorie";
+$lang["category_product"] = "Produit";
+$lang["catalog"] = "Catalogue";
+$lang["location_request"] = "Location";
+$lang["category_date"] = "Date";
+
+//product
+$lang["product"] = "Produit";
+$lang["add_product"] = "Add Produit";
+
+//orders
+$lang["orders"] = "Order";
 
 
 /* common */
