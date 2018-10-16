@@ -18,12 +18,15 @@ $lang["location_comment"] = "Comment";
 $lang["location_status"] = "Status";
 $lang["location_date"] = "Date";
 
+$lang["start_date"] = "Start Date";
+$lang["end_date"] = "End Date";
+
 //category
 $lang["catalog_category"] = "Category";
 $lang["add_category"] = "ADD Category";
 $lang["parent_category"] = "Parent Category";
 $lang["category_product"] = "Product";
-$lang["catalog"] = "Catalog";
+$lang["catalog"] = "Catalogue";
 $lang["location_request"] = "Location";
 $lang["category_date"] = "Date";
 
@@ -33,6 +36,7 @@ $lang["add_product"] = "Add Product";
 
 //orders
 $lang["orders"] = "Order";
+$lang["my_orders"] = "My Orders";
 
 
 $lang["well_received"] = "Well Received";
@@ -40,6 +44,16 @@ $lang["being_process"] = "Being Processed";
 $lang["complete"] = "Completed";
 $lang["status_change"] = "Status Changed";
 $lang["status_changed"] = "The Status has been changed.";
+
+
+$lang["place_order"] = "Place Order";
+$lang["order_placed"] = "The Order has been placed.";
+
+$lang['edit_category'] = "Edit Category"; 
+$lang['delete_category'] = "Delete Category"; 
+
+$lang['edit_product'] = "Edit Product"; 
+$lang['delete_product'] = "Delete Product"; 
 
 
 

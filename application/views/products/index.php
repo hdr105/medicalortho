@@ -33,7 +33,8 @@
                 {title: '<?php echo lang("product") ?>', "class": "w10p"},
                 {title: '<?php echo lang("catalog_category") ?>', "class": "w10p"},
                 {title: '<?php echo lang("quantity") ?>', "class": "w10p"},
-                {title: '<?php echo lang("price") ?>', "class": "w10p"}
+                {title: '<?php echo lang("price") ?>', "class": "w10p"},
+                {title: `<?php echo "<i class='fa fa-bars'></i>";?>`, "class": "w10p"},
 
             ],
              printColumns: [0, 2, 1,4],

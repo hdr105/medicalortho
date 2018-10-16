@@ -30,7 +30,8 @@
                 {title: '<?php echo lang("location_service") ?>', "class": "w10p"},
                 {title: '<?php echo lang("location_comment") ?>', "class": "w20p"},
                 {title: "<?php echo lang("company_name") ?>", "class": "w10p"},
-                {title: "<?php echo lang("location_date") ?>", "class": "w10p"},
+                {title: "<?php echo lang("start_date") ?>", "class": "w10p"},
+                {title: "<?php echo lang("end_date") ?>", "class": "w10p"},
                 {title: "<?php echo lang("location_status") ?>", "class": "w10p"},
                 {title: '<i class="fa fa-bars"></i>', "class": "text-center dropdown-option w50", visible: optionsVisibility},
 

@@ -130,4 +130,13 @@ class Clients_model extends Crud_model {
         return true;
     }
 
+    function get_client_group($id)
+    {
+        $this->db->select("group_ids");
+        $this->db->from($this->table);
+        $this->db->where("id",$id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 }

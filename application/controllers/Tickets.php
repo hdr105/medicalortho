@@ -149,6 +149,8 @@ class Tickets extends MY_Controller {
 
     // add a new ticket
     function save() {
+
+
         $id = $this->input->post('id');
 
         if ($id) {
@@ -436,6 +438,10 @@ class Tickets extends MY_Controller {
                 $view_data["sort_as_decending"] = $sort_as_decending;
 
                 $view_data["show_project_reference"] = get_setting('project_reference_in_tickets');
+
+                // echo "<pre>";
+                // echo $view_data['comments'][0]->files;
+                // print_r(json_decode($view_data['comments'][0]->files)); die;
 
                 $this->template->rander("tickets/view", $view_data);
             } else {

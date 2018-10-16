@@ -131,6 +131,14 @@
                     $sidebar_menu[] = array("name" => "catalog", "url" => "catalog", "class" => "fa-file-ring");
                 }
 
+                if (get_setting("module_order") == "1" && ($this->login_user->is_admin)) {
+
+                    $sidebar_menu[] = array("name" => "orders", "url" => "orders", "class" => "fa-shopping-cart  ", );
+                }
+                else if (get_setting("module_order") && ($this->login_user->is_admin || $access_catalog)) {
+                    $sidebar_menu[] = array("name" => "orders", "url" => "orders", "class" => "fa-shopping-cart  ");
+                }
+
                 if (get_setting("module_ticket") == "1" && ($this->login_user->is_admin || $access_ticket)) {
 
                     $ticket_badge = 0;
@@ -257,7 +265,13 @@
                 }
 
                 if (get_setting("module_order") == "1") {
-                     $sidebar_menu[] = array("name" => "orders", "url" => "orders", "class" => "fa-archive");
+    
+                      $sidebar_menu[] = array("name" => "orders", "url" => "orders", "class" => "fa-archive",
+                        "submenu" => array(
+                            array("name" => "orders", "url" => "orders"),
+                            array("name" => "my_orders", "url" => "orders/myorders")
+                        )
+                    );
                 }
 
                 

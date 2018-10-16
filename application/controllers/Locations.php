@@ -101,7 +101,8 @@ class Locations extends MY_Controller {
             "comment" => $this->input->post('comment'),            
             "created_by" => $this->login_user->id,
             "created_at" => $now,
-            "loc_date"=>$this->input->post('location_date')
+            "loc_date"=>$this->input->post('start_date'),
+            "end_date" =>$this->input->post('end_date')
         );
 
         $location_data = clean_data($location_data);
@@ -217,8 +218,16 @@ class Locations extends MY_Controller {
                 $row_data[] = $data->company_name;
             }
         }
+        $date = $data->loc_date;
+        $format = date_create($date);
+        $start_date = date_format($format,'d-m-Y');
 
-        $row_data[] = $data->loc_date;
+        $end_d = $data->end_date;
+        $format_1 = date_create($end_d);
+        $end_date = date_format($format_1,'d-m-Y');
+
+        $row_data[] = $start_date;
+        $row_data[] = $end_date;
 
         if ($data->status === "1") {
             $status_class = "label-warning";
@@ -269,7 +278,7 @@ class Locations extends MY_Controller {
     } 
     else if($view_type == "table") 
     {
-       echo json_encode(array("success" => true,  "data" => $this->_row_data($location_id),'id' => $location_id, 'message' => lang('status_changed')));
+       echo json_encode(array("success" => true, "reload"=>true , "data" => $this->_row_data($location_id),'id' => $location_id, 'message' => lang('status_changed')));
     }
 
        

@@ -12,7 +12,6 @@ $lang["location_date"] = "Rendez-vous amoureux";
 $lang["location_room"] = "Room";
 $lang["location_service"] = "Service";
 $lang["location_comment"] = "Comment";
-$lang["location_status"] = "Statut";
 $lang["well_received"] = "Bien reçu";
 $lang["being_process"] = "Être en cours de traitement";
 $lang["complete"] = "Terminé";
@@ -1118,12 +1117,12 @@ $lang["enable_email_notification"] = "Activer les notifications emails";
 
 /* locations */
 
-$lang["add_location"] = "Créer un location";
+$lang["add_location"] = "Nouvelle location";
 $lang["location"] = "Location";
 $lang["locations"] = "Locations";
 $lang["location_id"] = "Numéro location";
 $lang["open_locations"] = "Locations ouverts";
-$lang["location_status"] = "Status des locations";
+$lang["location_status"] = "Statut de la location";
 $lang['location_type'] = "Type de location";
 $lang['location_quantity'] = "Quantité";
 $lang['location_patient'] = "Patient";

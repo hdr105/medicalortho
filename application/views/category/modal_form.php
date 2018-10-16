@@ -1,5 +1,5 @@
 <div class="modal-body clearfix">
-    <div id="new-location-dropzone" class="post-dropzone">
+    <div id="new-catagory-dropzone" class="post-dropzone">
         <?php echo form_open(get_uri("category/save"), array("id" => "category-form", "class" => "general-form", "role" => "form")); ?>
         <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />
 
@@ -21,7 +21,18 @@
             </div>
         </div>
 
+     
+            
         <div class="form-group">
+            <label for="parent_cat" class=" col-md-3"><?php echo lang('parent_category'); ?></label>
+            <div class=" col-md-9">
+                 <?php
+                    echo form_dropdown("parent_cat", $parent_category, array($model_info->parent_id), "class='select2 parent_cat'");
+                ?>
+            </div>
+        </div>
+
+           <div class="form-group catalog_div">
             <label for="parent_cat" class=" col-md-3"><?php echo lang('catalog'); ?></label>
             <div class=" col-md-9">
                <?php
@@ -29,20 +40,15 @@
                ?>
            </div>
        </div>
-            
-        <div class="form-group">
-            <label for="parent_cat" class=" col-md-3"><?php echo lang('parent_category'); ?></label>
-            <div class=" col-md-9">
-                 <?php
-                    echo form_dropdown("parent_cat", $parent_category, array($model_info->parent_id), "class='select2'");
-                ?>
-            </div>
-        </div>
   
-       
+        <?php $this->load->view("includes/dropzone_preview"); ?>
         <div class="row">
             <div class="modal-footer">
-                <button class="btn btn-default upload-file-button pull-left btn-sm round" type="button" style="color:#7988a2"><i class='fa fa-camera'></i> <?php echo lang("upload_file"); ?></button>
+                <button class="btn btn-default upload-file-button pull-left btn-sm round <?php
+                if ($model_info->id) {
+                    echo "hide";
+                }
+                ?> " type="button" style="color:#7988a2"><i class='fa fa-camera'></i> <?php echo lang("upload_file"); ?></button>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> <?php echo lang('close'); ?></button>
                 <button type="submit" class="btn btn-primary"><span class="fa fa-check-circle"></span> <?php echo lang('save'); ?></button>
@@ -55,8 +61,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
        var editMode = "<?php echo $model_info->id; ?>";
-       var uploadUrl = "<?php echo get_uri("catagory/upload_file"); ?>";
-       var validationUrl = "<?php echo get_uri("catagory/validate_ticket_file"); ?>";
+       var uploadUrl = "<?php echo get_uri("category/upload_file"); ?>";
+       var validationUrl = "<?php echo get_uri("category/validate_category_file"); ?>";
        var dropzone = attachDropzoneWithForm("#new-catagory-dropzone", uploadUrl, validationUrl);
 
         $("#category-form").appForm({
@@ -78,7 +84,8 @@
             }
         });
 
-  $("#category-form .select2").select2();
+     $("#category-form .select2").select2();
+
 });
 
 

@@ -396,12 +396,11 @@ if (!function_exists('move_files_from_temp_dir_to_permanent_dir')) {
                     $new_file_name = move_temp_file($file_name, $target_path, $related_to, $temp_file);
                     $files_data[] = array(
                         "file_name" => $new_file_name,
-                        "file_size" => $file_size,
                     );
                 }
             }
         }
-        return serialize($files_data);
+        return $files_data;
     }
 
 };
@@ -620,5 +619,22 @@ if (!function_exists('get_general_file_path')) {
     }
 
 }
+
+
+if(!function_exists('get_client_group'))
+{
+    function get_client_group($id)
+    {
+
+        $CI =& get_instance();
+        $CI->load->model('Clients_model');
+        $group_id = $CI->Clients_model->get_client_group($id);
+        if($group_id)
+        {
+            return $group_id;
+        }
+    }
+}
+
 
 

@@ -4,21 +4,41 @@
         <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />
 
         <div class="form-group">
-            <label for="estimate_date" class=" col-md-3"><?php echo lang('location_date'); ?></label>
+            <label for="start_date" class=" col-md-3"><?php echo lang('start_date'); ?></label>
             <div class="col-md-9">
                 <?php
                 echo form_input(array(
-                    "id" => "location_date",
-                    "name" => "location_date",
-                    "value" => $model_info->created_at,
+                    "id" => "start_date",
+                    "name" => "start_date",
+                    "value" => $model_info->loc_date,
                     "class" => "form-control",
-                    "placeholder" => lang('location_date'),
+                    "placeholder" => lang('start_date'),
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
                 ?>
             </div>
         </div>
+
+
+        <div class="form-group">
+            <label for="end_date" class=" col-md-3"><?php echo lang('end_date'); ?></label>
+            <div class="col-md-9">
+                <?php
+                echo form_input(array(
+                    "id" => "end_date",
+                    "name" => "end_date",
+                    "value" => $model_info->end_date,
+                    "class" => "form-control",
+                    "placeholder" => lang('end_date'),
+                    "data-rule-required" => true,
+                    "data-msg-required" => lang("field_required"),
+                ));
+                ?>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <label for="title" class=" col-md-3"><?php echo lang('location_type'); ?></label>
             <div class=" col-md-9">
@@ -29,7 +49,6 @@
                     "value" => $model_info->rental_type,
                     "class" => "form-control",
                     "placeholder" => lang('location_type'),
-                    "autofocus" => true,
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
@@ -47,7 +66,6 @@
                     "value" => $model_info->quantity,
                     "class" => "form-control",
                     "placeholder" => lang('location_quantity'),
-                    "autofocus" => true,
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
@@ -65,7 +83,6 @@
                     "value" => $model_info->patient,
                     "class" => "form-control",
                     "placeholder" => lang('location_patient'),
-                    "autofocus" => true,
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
@@ -82,7 +99,6 @@
                     "value" => $model_info->room,
                     "class" => "form-control",
                     "placeholder" => lang('location_room'),
-                    "autofocus" => true,
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
@@ -99,7 +115,6 @@
                     "value" => $model_info->service,
                     "class" => "form-control",
                     "placeholder" => lang('location_service'),
-                    "autofocus" => true,
                     "data-rule-required" => true,
                     "data-msg-required" => lang("field_required"),
                 ));
@@ -182,7 +197,7 @@
 
             }
         });
-setDatePicker("#location_date");
+setDatePicker("#start_date,#end_date");
 $(".tax-select2").select2();
 });
 
