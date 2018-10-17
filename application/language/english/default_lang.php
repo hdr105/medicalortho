@@ -37,6 +37,8 @@ $lang["add_product"] = "Add Product";
 //orders
 $lang["orders"] = "Order";
 $lang["my_orders"] = "My Orders";
+$lang["product_image"] = "Product Image";
+$lang["check"] = "Select";
 
 
 $lang["well_received"] = "Well Received";
