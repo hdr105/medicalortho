@@ -23,4 +23,13 @@ class Client_groups_model extends Crud_model {
         return $this->db->query($sql);
     }
 
+
+    public function get_all_data($value='')
+    {
+        $this->db->select("id");
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

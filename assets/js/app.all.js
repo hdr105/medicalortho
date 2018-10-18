@@ -8726,6 +8726,7 @@ attachDropzoneWithForm = function (dropzoneTarget, uploadUrl, validationUrl, opt
 
     if (!options)
         options = {};
+	
 
     var postFilesDropzone = new Dropzone(dropzoneTarget, {
         url: uploadUrl,

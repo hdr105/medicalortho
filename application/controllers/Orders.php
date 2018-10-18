@@ -13,6 +13,7 @@ class Orders extends MY_Controller {
         $this->load->model("Product_model");
         $this->load->model("Order_model");
         $this->load->model("Category_model");
+        $this->load->model("Client_groups_model");
         $this->load->helper("app_files");
         $this->load->helper("date_time");
         $this->load->helper("general");
@@ -23,9 +24,27 @@ class Orders extends MY_Controller {
         if ($this->login_user->user_type === "client") {
             $view_data = array();
             $user_id = $this->login_user->id;
+
             $group_id = get_client_group($user_id);
-            $client_group = $group_id->group_ids;
-            $view_data['categories'] = $this->Category_model->get_data($client_group);
+            $group_ids = $group_id->group_ids;
+            $category_groups = explode(",",$group_ids);
+
+            $client_groups = $this->Client_groups_model->get_all_data();
+            $newarray = array();
+
+            foreach ($client_groups as $client) 
+            {
+                array_push($newarray,$client['id']);
+            }
+
+
+            $result=array_diff($newarray,$category_groups);
+            //print_r($result);
+            
+            
+            $view_data['categories'] = $this->Category_model->get_data($result);
+            // echo $this->db->last_query();
+            // exit();
             $this->template->rander("orders/index", $view_data);
         }
         else{
@@ -38,8 +57,23 @@ class Orders extends MY_Controller {
     {
         $user_id = $this->login_user->id;
         $group_id = get_client_group($user_id);
-        $client_group = $group_id->group_ids;
-        $view_data['subCategories'] = $this->Category_model->subCategories($id,$client_group);
+        $group_ids = $group_id->group_ids;
+        $category_groups = explode(",",$group_ids);
+
+        $client_groups = $this->Client_groups_model->get_all_data();
+        $newarray = array();
+
+        foreach ($client_groups as $client) 
+        {
+            array_push($newarray,$client['id']);
+        }
+
+
+        $result=array_diff($newarray,$category_groups);
+
+        $view_data['subCategories'] = $this->Category_model->subCategories($id,$result);
+        // echo $this->db->last_query();
+        // exit();
         $this->template->rander("orders/sub_categories", $view_data);
 
     }

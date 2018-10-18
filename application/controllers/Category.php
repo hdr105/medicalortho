@@ -40,7 +40,7 @@ class Category extends MY_Controller {
         $view_data['model_info'] = $this->Category_model->get_one($this->input->post('id'));
         $view_data['parent_category'] = array("" => "-") + $this->Category_model->get_dropdown_list_catagory(array("name"));
 
-        $view_data['client_group'] = array("" => "-") + $this->Client_groups_model->get_dropdown_list(array("title"));
+        $view_data['client_group'] = $this->Client_groups_model->get_dropdown_list(array("title"));
         $this->load->view('category/modal_form', $view_data);
     }
     
@@ -57,27 +57,36 @@ class Category extends MY_Controller {
 
         $data = array(
             "name" => $this->input->post('category'),
-            "parent_id" => $this->input->post('parent_cat'),
-            "catalog_id"=> $this->input->post("catalog"),
+            "parent_id" => $this->input->post('parent_cat')
         );
 
-        if (!$id) {
+        $catalog = $this->input->post('catalog');
+        $catalouge =  implode(",",$catalog);
 
-            $target_path = get_setting("category_file_path");
-            $files_data = move_files_from_temp_dir_to_permanent_dir($target_path, "category");
+        $data['catalog_id'] = $catalouge;
 
-            $new_images = array();
-            foreach ($files_data as $files) 
-            {
-                $file = $files['file_name'];
-                array_push($new_images,$file);
-            }
-            $uploaded_image =  implode(",",$new_images);
-            
-            $data["created_date"] = get_current_utc_time();
-            $data["created_by"] = $this->login_user->id;
-            $data['image'] = $uploaded_image;
+        $target_path = get_setting("category_file_path");
+        $files_data = move_files_from_temp_dir_to_permanent_dir($target_path, "category");
+        
+        $prv_img = $this->input->post('previous_image');
+
+
+
+        $new_images = array();
+        foreach ($files_data as $files) 
+        {
+            $file = $files['file_name'];
+            array_push($new_images,$file);
         }
+
+        $uploaded_image =  implode(",",$new_images);
+        $inserted_image = !empty($files_data)?$uploaded_image:$prv_img; 
+           
+        $data["created_date"] = get_current_utc_time();
+        $data["created_by"] = $this->login_user->id;
+        $data['image'] = $inserted_image;
+
+
         $save_id = $this->Category_model->save($data, $id);
 
          if ($save_id) {

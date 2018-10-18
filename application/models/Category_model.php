@@ -70,13 +70,22 @@ class Category_model extends Crud_model {
         return $this->db->query($sql);
     }
 
-    function get_data($group_id)
+    function get_data($group_ids)
     {
+
         $this->db->select("*");
         $this->db->from($this->table);
         $this->db->where("parent_id",0);
         $this->db->where("deleted",0);
-        $this->db->where("catalog_id",$group_id);
+        if(isset($group_ids))
+        {
+            foreach ($group_ids as $group) 
+            {
+                $this->db->where("catalog_id != $group");
+            }
+            
+        }
+        
 
         $query = $this->db->get();
         return $query->result_array();
@@ -88,7 +97,14 @@ class Category_model extends Crud_model {
         $this->db->from($this->table);
         $this->db->where("parent_id",$id);
         $this->db->where("deleted",0);
-        $this->db->where("catalog_id",$group_id);
+        if(isset($group_id))
+        {
+            foreach ($group_id as $group) 
+            {
+                $this->db->where("catalog_id != $group");
+            }
+            
+        }
         $query = $this->db->get();
         return $query->result_array();
     }
