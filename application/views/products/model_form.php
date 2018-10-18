@@ -108,7 +108,8 @@
         var editMode = "<?php echo $model_info->id; ?>";
         var uploadUrl = "<?php echo get_uri("product/upload_file"); ?>";
         var validationUrl = "<?php echo get_uri("product/validate_category_file"); ?>";
-        var dropzone = attachDropzoneWithForm("#new-product-dropzone", uploadUrl, validationUrl);
+        var options = {maxFiles:1};
+        var dropzone = attachDropzoneWithForm("#new-product-dropzone", uploadUrl, validationUrl,options);
 
         $("#product-form").appForm({
             onSuccess: function (result) {
