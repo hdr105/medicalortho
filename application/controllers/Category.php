@@ -145,11 +145,21 @@ class Category extends MY_Controller {
         $row_data = array(
             $data->name,
             $parent_name, 
-            $data->title,
-            //  modal_anchor(get_uri("category/modal_form"), "<i class='fa fa-pencil'></i>", array("class" => "edit", "title" => lang('edit_category'), "data-post-id" => $data->id))
-            // . js_anchor("<i class='fa fa-times fa-fw'></i>", array('title' => lang('delete_category'), "class" => "delete", "data-id" => $data->id, "data-action-url" => get_uri("estimates/delete"), "data-action" => "delete"))
                                 
         );
+
+        $cats = explode(",", $data->catalog_id);
+
+        $cat = array();
+
+        foreach ($cats as $key => $value) {
+            
+            $group = $this->Client_groups_model->get_one($value);
+         
+            $cat[] = $group->title;
+        }
+
+        $row_data[] = implode(",", $cat);
 
         $edit = '<li role="presentation">' . modal_anchor(get_uri("category/modal_form"), "<i class='fa fa-pencil'></i> " . lang('edit_category'), array("title" => lang('category'), "data-post-view" => "details", "data-post-id" => $data->id)) . '</li>';
 

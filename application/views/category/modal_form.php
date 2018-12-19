@@ -36,7 +36,12 @@
             <label for="parent_cat" class=" col-md-3"><?php echo lang('catalog'); ?></label>
             <div class=" col-md-9">
                <?php
-               echo form_dropdown("catalog[]", $client_group, array($model_info->catalog_id), "class='select2' multiple='multiple'");
+               $selected = $model_info->catalog_id;
+               if ($selected != "") {
+                   
+                   $selected = explode(",", $selected);
+               }
+               echo form_dropdown("catalog[]", $client_group, $selected, "class='select2' multiple='multiple'");
                ?>
            </div>
        </div>

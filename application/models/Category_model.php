@@ -45,7 +45,6 @@ class Category_model extends Crud_model {
     function get_details($options = array()) {
 
         $category = $this->db->dbprefix('category');
-        $client_groups = $this->db->dbprefix('client_groups');
 
         $where = " $category.deleted = 0 ";
         $where_query = false;
@@ -57,9 +56,8 @@ class Category_model extends Crud_model {
         }
        
        
-        $sql = "SELECT $category.*, $client_groups.title
-        FROM $category 
-        LEFT JOIN $client_groups ON $client_groups.id= $category.catalog_id ";
+        $sql = "SELECT $category.*
+        FROM $category ";
 
         if ($where != "") {
             
