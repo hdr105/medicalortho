@@ -41,6 +41,7 @@ class Category extends MY_Controller {
         $view_data['parent_category'] = array("" => "-") + $this->Category_model->get_dropdown_list_catagory(array("name"));
 
         $view_data['client_group'] = $this->Client_groups_model->get_dropdown_list(array("title"));
+        
         $this->load->view('category/modal_form', $view_data);
     }
     

@@ -139,4 +139,22 @@ class Clients_model extends Crud_model {
         return $query->row();
     }
 
+    function get_dropdown_list_clients() {
+       $this->db->select("*");
+        $this->db->from($this->table);
+        $this->db->like('group_ids',1);
+        $query = $this->db->get();
+        return $query->result(); 
+    }
+
+    function get_client_name($id)
+    {
+        $this->db->select("*");
+        $this->db->from($this->table);
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->row(); 
+    }
+       
+
 }

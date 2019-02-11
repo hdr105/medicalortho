@@ -1,4 +1,4 @@
-<div class="modal-body clearfix">
+ <div class="modal-body clearfix">
     <div id="new-catagory-dropzone" class="post-dropzone">
         <?php echo form_open(get_uri("category/save"), array("id" => "category-form", "class" => "general-form", "role" => "form")); ?>
         <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />

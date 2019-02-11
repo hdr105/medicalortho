@@ -69,6 +69,7 @@ $config['category_file_path'] = 'files/category_images/';
 $config['product_file_path'] = 'files/product_images/';
 $config['project_file_path'] = 'files/project_files/';
 $config['system_file_path'] = 'files/system/';
+$config['patient_file_path'] = 'files/patient/';
 
 
 /*

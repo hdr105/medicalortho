@@ -27,6 +27,7 @@ class Orders extends MY_Controller {
 
             $group_id = get_client_group($user_id);
             $group_ids = $group_id->group_ids;
+
             $category_groups = explode(",",$group_ids);
 
             $client_groups = $this->Client_groups_model->get_all_data();
@@ -38,13 +39,13 @@ class Orders extends MY_Controller {
             }
 
 
-            $result=array_diff($newarray,$category_groups);
-            //print_r($result);
-            
+            $result=array_intersect($category_groups,$newarray);
+        
             
             $view_data['categories'] = $this->Category_model->get_data($result);
-            // echo $this->db->last_query();
-            // exit();
+
+            //echo $this->db->last_query(); die;
+           
             $this->template->rander("orders/index", $view_data);
         }
         else{

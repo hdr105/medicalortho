@@ -5,9 +5,10 @@
             if ($this->login_user->user_type == "staff") {
 
 
-                $sidebar_menu = array(
-                    array("name" => "dashboard", "url" => "dashboard", "class" => "fa-desktop")
-                );
+                // $sidebar_menu = array(
+                //       //array("name" => "dashboard", "url" => "dashboard", "class" => "fa-desktop")
+                //     array("name" => "dashboard", "url" => "", "class" => "fa-desktop")
+                // );
 
                 $permissions = $this->login_user->permissions;
 
@@ -20,6 +21,7 @@
                 $access_estimate = get_array_value($permissions, "estimate");
                 $access_location =  get_array_value($permissions, "location");
                 $access_catalog =  get_array_value($permissions, "catalog");
+                $access_catalog =  get_array_value($permissions, "demands");
 
                 $access_items = ($this->login_user->is_admin || $access_invoice || $access_estimate);
 
@@ -35,12 +37,17 @@
                     $sidebar_menu[] = array("name" => "events", "url" => "events", "class" => "fa-calendar");
                 }
 
-                if (get_setting("module_note") == "1") {
-                    $sidebar_menu[] = array("name" => "notes", "url" => "notes", "class" => "fa-book font-16");
-                }
+                // if (get_setting("module_note") == "1") {
+                //     //$sidebar_menu[] = array("name" => "notes", "url" => "notes", "class" => "fa-book font-16");
+                //     $sidebar_menu[] = array("name" => "notes", "url" => "", "class" => "fa-book font-16");
+                // }
 
                 if (get_setting("module_message") == "1") {
                     $sidebar_menu[] = array("name" => "messages", "url" => "messages", "class" => "fa-envelope", "devider" => true, "badge" => count_unread_message(), "badge_class" => "badge-secondary");
+                }
+
+                 if (get_setting("module_patients") == "1") {
+                    $sidebar_menu[] = array("name" => "patients", "url" => "patients", "class" => "fa-user-md");
                 }
 
 
@@ -51,17 +58,17 @@
 
 
 
-                $project_submenu = array(
-                    array("name" => "all_projects", "url" => "projects/all_projects"),
-                    array("name" => "tasks", "url" => "projects/all_tasks"));
+                // $project_submenu = array(
+                //     array("name" => "all_projects", "url" => "projects/all_projects"),
+                //     array("name" => "tasks", "url" => "projects/all_tasks"));
 
                 if ($manage_timesheets && get_setting("module_project_timesheet")) {
                     $project_submenu[] = array("name" => "timesheets", "url" => "projects/all_timesheets");
                 }
 
-                $sidebar_menu[] = array("name" => "projects", "url" => "projects", "class" => "fa-th-large",
-                    "submenu" => $project_submenu
-                );
+                // $sidebar_menu[] = array("name" => "projects", "url" => "projects", "class" => "fa-th-large",
+                //     "submenu" => $project_submenu
+                // );
 
                 if (get_setting("module_estimate") && get_setting("module_estimate_request") && ($this->login_user->is_admin || $access_estimate)) {
 
@@ -80,9 +87,10 @@
                     $sidebar_menu[] = array("name" => "invoices", "url" => "invoices", "class" => "fa-file-text");
                 }
 
-                if ($access_items && (get_setting("module_invoice") == "1" || get_setting("module_estimate") == "1" )) {
-                    $sidebar_menu[] = array("name" => "items", "url" => "items", "class" => "fa-list-ul");
-                }
+                // if ($access_items && (get_setting("module_invoice") == "1" || get_setting("module_estimate") == "1" )) {
+                //     //$sidebar_menu[] = array("name" => "items", "url" => "items", "class" => "fa-list-ul");
+                //     $sidebar_menu[] = array("name" => "items", "url" => "", "class" => "fa-list-ul");
+                // }
 
                 if ((get_setting("module_invoice") == "1" || get_setting("module_expense") == "1") && ($this->login_user->is_admin || $access_expense || $access_invoice)) {
                     $finance_submenu = array();
@@ -116,6 +124,12 @@
                 else if (get_setting("module_location") && ($this->login_user->is_admin || $access_catalog)) {
                     $sidebar_menu[] = array("name" => "location_request", "url" => "locations", "class" => "fa-map-marker ");
                 }
+
+                if (get_setting("module_demands") == "1" && ($this->login_user->is_admin)) {
+
+                    $sidebar_menu[] = array("name" => "demands_request", "url" => "demands", "class" => "fa fa-minus-square-o ", );
+                }
+                
 
 
                  if (get_setting("module_catalog") == "1" && ($this->login_user->is_admin)) {
@@ -232,23 +246,31 @@
                 //get the array of hidden menu
                 $hidden_menu = explode("," , get_setting("hidden_client_menus"));
                 
-                $sidebar_menu = array(
-                    array("name" => "dashboard", "url" => "dashboard", "class" => "fa-desktop"),
-                );
+                // $sidebar_menu = array(
+                //    // array("name" => "dashboard", "url" => "dashboard", "class" => "fa-desktop"),
+                //      array("name" => "dashboard", "url" => "", "class" => "fa-desktop"),
+                // );
 
                 //check message access settings for clients
                 if (get_setting("module_message") && get_setting("client_message_users")) {
                     $sidebar_menu[] = array("name" => "messages", "url" => "messages", "class" => "fa-envelope", "badge" => count_unread_message());
                 }
 
-                if(!in_array("projects", $hidden_menu)){
-                    $sidebar_menu[] = array("name" => "projects", "url" => "projects/all_projects", "class" => "fa fa-th-large");
+                // if(!in_array("projects", $hidden_menu)){
+                //     //$sidebar_menu[] = array("name" => "projects", "url" => "projects/all_projects", "class" => "fa fa-th-large");
+                //       $sidebar_menu[] = array("name" => "projects", "url" => "", "class" => "fa fa-th-large");
+                // }
+
+                if (get_setting("module_patients") == "1") {
+                    $sidebar_menu[] = array("name" => "patients", "url" => "patients", "class" => "fa-user-md");
                 }
                 
 
                 if (get_setting("module_estimate") && !in_array("estimates", $hidden_menu)) {
                     $sidebar_menu[] = array("name" => "estimates", "url" => "estimates", "class" => "fa-file");
                 }
+
+
 
                 if (get_setting("module_invoice") == "1") {
                     if(!in_array("invoices", $hidden_menu)){
@@ -259,6 +281,22 @@
                     }
                     
                 }
+
+                $user_id = $this->login_user->id;
+                $group_id = get_client_group($user_id);
+                $group_ids = $group_id->group_ids;
+                $category_groups = explode(",",$group_ids);
+                $obj =& get_instance();
+                $check = $this->db->select()->from('clients')->where('id',$user_id)->where_in("3",$category_groups)->get();
+                $count =  $check->num_rows();
+                if($count > 0)
+                {
+                  if (get_setting("module_demands") == "1") {
+                    $sidebar_menu[] = array("name" => "demands_request", "url" => "demands/clients", "class" => "fa fa-minus-square-o ");
+                }
+            }
+
+                
 
                 if (get_setting("module_location") == "1") {
                      $sidebar_menu[] = array("name" => "locations", "url" => "locations", "class" => "fa-map-marker");

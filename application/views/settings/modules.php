@@ -112,6 +112,14 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="module_estimate" class="col-md-2"><?php echo lang('demands_request'); ?></label>
+                    <div class="col-md-10">
+                        <?php
+                        echo form_checkbox("module_demands", "1", get_setting("module_demands") ? true : false, "id='module_demands' class='ml15'");
+                        ?>                       
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="module_estimate" class="col-md-2"><?php echo lang('catalog'); ?></label>
                     <div class="col-md-10">
                         <?php

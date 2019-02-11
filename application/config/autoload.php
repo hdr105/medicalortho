@@ -175,6 +175,7 @@ $autoload['model'] = array(
     'General_files_model',
     'Todo_model',
     'Client_groups_model',
-    'Location_model'
+    'Location_model',
+    'Demands_model'
 );
 

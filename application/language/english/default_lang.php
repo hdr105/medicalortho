@@ -21,6 +21,10 @@ $lang["location_date"] = "Date";
 $lang["start_date"] = "Start Date";
 $lang["end_date"] = "End Date";
 
+
+$lang['patients'] = "Patients";
+$lang['add_patient'] = "Add Patients";
+
 //category
 $lang["catalog_category"] = "Category";
 $lang["add_category"] = "ADD Category";
@@ -28,6 +32,7 @@ $lang["parent_category"] = "Parent Category";
 $lang["category_product"] = "Product";
 $lang["catalog"] = "Catalogue";
 $lang["location_request"] = "Location";
+$lang["demands_request"] = "Demands";
 $lang["category_date"] = "Date";
 
 //product
@@ -1164,3 +1169,21 @@ $lang["change_status"] = "Change status";
 $lang["last_activity"] = "Last activity";
 $lang["open_tickets"] = "Open tickets";
 $lang["ticket_status"] = "Ticket Status";
+
+$lang['tyype_of_pres'] = "Type of prestation";
+$lang['patient'] = "Patient";
+$lang['patient_tel'] = "Patient Telephone Number";
+$lang['coment']  = "Comment";
+$lang['product_name']  = "Product Name";
+
+
+$lang['enter_name'] = "Enter Name";
+$lang['enter_surname'] = "Enter Surname";
+$lang['enter_city'] = "Enter City";
+$lang['enter_assigned_doc'] = "Assigned Doctor";
+$lang['patient_added'] = "Patient Added";
+$lang['surname'] = "Surname";
+$lang['edit_patient'] = "Edit Patient";
+$lang['delete_patient'] = "Delete Patient";
+
+$lang['download_file'] = "Download File";

@@ -18,7 +18,7 @@ $lang["complete"] = "Terminé";
 $lang["status_change"] = "Statut changé";
 $lang["status_changed"] = "Le statut a été changé.";
 
-
+$lang['patients'] = "Suivi patient";
 //category
 $lang["catalog_category"] = "Catégorie";
 $lang["add_category"] = "ADD Catégorie";
@@ -26,6 +26,7 @@ $lang["parent_category"] = "Parent Catégorie";
 $lang["category_product"] = "Produit";
 $lang["catalog"] = "Catalogue";
 $lang["location_request"] = "Location";
+$lang["demands_request"] = "Demande de prestation";
 $lang["category_date"] = "Date";
 
 //product
@@ -33,7 +34,8 @@ $lang["product"] = "Produit";
 $lang["add_product"] = "Add Produit";
 
 //orders
-$lang["orders"] = "Order";
+$lang["orders"] = "Commande";
+$lang["my_orders"] = "Mes commandes";
 
 
 /* common */
@@ -1148,3 +1150,22 @@ $lang['location_service'] = "Service";
 $lang['location_comment'] = "Commentaire";
 $lang["location_created"] = "Location ouvert";
 $lang['location_request'] = "Demandes location";
+
+
+$lang['tyype_of_pres'] = "Type de prestation";
+$lang['patient'] = "Patient";
+$lang['patient_tel'] = "Numéro de téléphone du patient";
+$lang['coment']  = "commentaire";
+$lang['product_name']  = "Nom du produit";
+
+
+$lang['enter_name'] = "Entrez le nom";
+$lang['enter_surname'] = "Entrez le nom de famille";
+$lang['enter_city'] = "Entrez la ville";
+$lang['enter_assigned_doc'] = "Médecin assigné";
+$lang['patient_added'] = "Patient ajouté";
+$lang['surname'] = "Prenom";
+$lang['edit_patient'] = "Editer le patient";
+$lang['delete_patient'] = "Supprimer le patient";
+
+$lang['download_file'] = "Télécharger le fichier";

@@ -79,7 +79,7 @@ class Category_model extends Crud_model {
         {
             foreach ($group_ids as $group) 
             {
-                $this->db->where("catalog_id != $group");
+                $this->db->like("catalog_id", $group);
             }
             
         }
